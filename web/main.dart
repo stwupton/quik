@@ -21,9 +21,17 @@ final num width = 1080;
 final num levelPaddingX = 40;
 final num levelPaddingY = 80;
 
+String getProperty(String key, [String defaultValue]) {
+  return Uri.base.queryParameters[key] ?? defaultValue;
+}
+
 // Level properties.
-final int columns = 3;
-final int rows = 2;
+int get columns => int.parse(getProperty('columns', '3'));
+int get rows => int.parse(getProperty('rows', '2'));
+
+// Timer properties.
+num get totalSeconds => num.parse(getProperty('totalSeconds', '6'));
+num get appendingSeconds => num.parse(getProperty('appendingSeconds', '.6'));
 
 // Create level reel.
 final LevelReel levelReel = new LevelReel();
@@ -32,10 +40,6 @@ final LevelReel levelReel = new LevelReel();
 final LevelView dummyLevel = new LevelView(new Level(columns, rows),
     width - levelPaddingX * 2, height - levelPaddingY * 2);
 final num baseNodeRadius = dummyLevel.baseNodeRadius;
-
-// Timer properties.
-final num totalSeconds = 6;
-final num appendingSeconds = .6;
 
 // Create countdown view.
 final CountdownView countdownView = new CountdownView(
