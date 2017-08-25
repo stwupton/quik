@@ -21,9 +21,8 @@ final num width = 1080;
 final num levelPaddingX = 40;
 final num levelPaddingY = 80;
 
-String getProperty(String key, [String defaultValue]) {
-  return Uri.base.queryParameters[key] ?? defaultValue;
-}
+String getProperty(String key, [String defaultValue]) =>
+    Uri.base.queryParameters[key] ?? defaultValue;
 
 // Level properties.
 int get columns => int.parse(getProperty('columns', '3'));
